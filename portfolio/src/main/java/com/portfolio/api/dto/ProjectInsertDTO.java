@@ -1,15 +1,18 @@
 package com.portfolio.api.dto;
 
+import java.util.List;
+
 public class ProjectInsertDTO {
 
 	private String title;
 	private String description;
-	private String technologies;
+
+	private List<String> technologies;
 	private String link;
 	private String githubLink;
 	private String image;
 
-	public ProjectInsertDTO(String title, String description, String technologies, String link, String githubLink,
+	public ProjectInsertDTO(String title, String description, List<String> technologies, String link, String githubLink,
 			String image) {
 		super();
 		this.title = title;
@@ -40,11 +43,11 @@ public class ProjectInsertDTO {
 		this.description = description;
 	}
 
-	public String getTechnologies() {
+	public List<String> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(String technologies) {
+	public void setTechnologies(List<String> technologies) {
 		this.technologies = technologies;
 	}
 
