@@ -42,9 +42,13 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable()).cors((cors) -> cors.configurationSource(configurationSource()))
 				.authorizeHttpRequests(requests -> requests.requestMatchers("/public/").permitAll()
-
+						.requestMatchers(HttpMethod.GET, "/projects").permitAll()
+						.requestMatchers(HttpMethod.POST, "/projects").authenticated()
+						.requestMatchers(HttpMethod.PUT, "/projects").permitAll()
+						.requestMatchers(HttpMethod.DELETE, "/projects").permitAll()
+						
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
-						.anyRequest().permitAll())
+						.anyRequest().authenticated())
 
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.headers((headers) -> headers.disable());
@@ -71,7 +75,7 @@ public class SecurityConfig {
 	@Bean
 	CorsConfigurationSource configurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://35.193.175.226:3001","http://localhost:5173" ));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173" ));
 
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT"));
 

@@ -2,6 +2,7 @@ package com.portfolio.api.security;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,14 +43,13 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {
-		if(jwtUtil.isValidToken(token)){
-			String username = jwtUtil.getUsername(token);
-			UserDetails user = userDetailsService.loadUserByUsername(username);
-			return new UsernamePasswordAuthenticationToken(username, null, user.getAuthorities());
-		}
-		
-		return null;
-	}
+        if (jwtUtil.isValidToken(token)) {
+            String username = jwtUtil.getUsername(token);
+            UserDetails user = userDetailsService.loadUserByUsername(username);
+            return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());//nao esta retornando autoridade pq n usamos!
+        }
+        return null;
+    }
 
 }
 
