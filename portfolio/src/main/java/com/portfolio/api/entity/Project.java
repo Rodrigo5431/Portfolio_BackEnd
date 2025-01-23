@@ -1,5 +1,6 @@
 package com.portfolio.api.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -15,12 +16,12 @@ public class Project {
 	private Long id;
 	private String title;
 	private String description;
-	private String technologies;
+	private List<String> technologies;
 	private String link;
 	private String githubLink;
 	private String image;
 
-	public Project(Long id, String title, String description, String technologies, String link, String githubLink,
+	public Project(Long id, String title, String description, List<String> technologies, String link, String githubLink,
 			String image) {
 		super();
 		this.id = id;
@@ -60,11 +61,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public String getTechnologies() {
+	public List<String> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(String technologies) {
+	public void setTechnologies(List<String> technologies) {
 		this.technologies = technologies;
 	}
 

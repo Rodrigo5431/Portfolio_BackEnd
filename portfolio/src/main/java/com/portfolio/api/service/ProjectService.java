@@ -2,8 +2,10 @@ package com.portfolio.api.service;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +28,14 @@ public class ProjectService {
 	private PhotoService photoService;
 
 	public List<ProjectDTO> listAll() {
-		return projectRepository.findAll().stream().map(ProjectDTO::new).toList();
-
+	   
+	        return projectRepository.findAll()
+	            .stream()
+	            .map(ProjectDTO::new)
+	            .collect(Collectors.toList());
+	    
 	}
+
 
 	public ProjectDTO getById(Long id) {
 		Optional<Project> projectOpt = projectRepository.findById(id);
@@ -58,7 +65,7 @@ public class ProjectService {
 
 	public ProjectDTO addPhotoUri(Project project) {
 
-		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/project/photo/{id}w")
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/projects/photo/{id}")
 				.buildAndExpand(project.getId()).toUri();
 
 		ProjectDTO projectDto = new ProjectDTO();
@@ -72,5 +79,9 @@ public class ProjectService {
 		projectDto.setImage(uri.toString());
 		projectRepository.save(project);
 		return projectDto;
+	}
+	
+	public ProjectDTO update(Long id, ProjectInsertDTO projectInsert, MultipartFile file) {
+		return null;
 	}
 }

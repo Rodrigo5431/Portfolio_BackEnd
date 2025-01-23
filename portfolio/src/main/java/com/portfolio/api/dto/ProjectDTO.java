@@ -1,5 +1,7 @@
 package com.portfolio.api.dto;
 
+import java.util.List;
+
 import com.portfolio.api.entity.Project;
 
 public class ProjectDTO {
@@ -7,13 +9,14 @@ public class ProjectDTO {
 	private Long id;
 	private String title;
 	private String description;
-	private String technologies;
+
+	private List<String> technologies;
 	private String link;
 	private String githubLink;
 	private String image;
 
-	public ProjectDTO(Long id, String title, String description, String technologies, String link, String githubLink,
-			String image) {
+	public ProjectDTO(Long id, String title, String description, List<String> technologies, String link,
+			String githubLink, String image) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -62,11 +65,11 @@ public class ProjectDTO {
 		this.description = description;
 	}
 
-	public String getTechnologies() {
+	public List<String> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(String technologies) {
+	public void setTechnologies(List<String> technologies) {
 		this.technologies = technologies;
 	}
 
