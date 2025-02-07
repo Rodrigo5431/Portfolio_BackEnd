@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="true"/>
+	<list key="replacehistory">
+		<item value="project"/>
+		<item value="Project"/>
+		<item value="errors"/>
+		<item value="DateTime"/>
+		<item value="title"/>
+	</list>
+	<list key="searchhistory">
+		<item value="product"/>
+		<item value="Product"/>
+		<item value="erros"/>
+		<item value="dataHora"/>
+		<item value="titulo"/>
+	</list>
+</section>
