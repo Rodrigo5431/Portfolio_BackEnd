@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+.metadata
+
 application.properties
 
 ### STS ###
@@ -33,3 +35,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/.metadata/
