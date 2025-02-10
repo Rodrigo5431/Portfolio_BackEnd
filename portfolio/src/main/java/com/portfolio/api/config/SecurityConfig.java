@@ -43,9 +43,11 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable()).cors((cors) -> cors.configurationSource(configurationSource()))
 				.authorizeHttpRequests(requests -> requests.requestMatchers("/public/").permitAll()
 						.requestMatchers(HttpMethod.GET, "/projects").permitAll()
+						.requestMatchers(HttpMethod.GET, "/projects/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "/projects").authenticated()
-						.requestMatchers(HttpMethod.PUT, "/projects").permitAll()
-						.requestMatchers(HttpMethod.DELETE, "/projects").permitAll()
+						.requestMatchers(HttpMethod.PUT, "/projects").authenticated()
+						.requestMatchers(HttpMethod.DELETE, "/projects").authenticated()
+						.requestMatchers(HttpMethod.GET, "/projects/photo/**").permitAll()
 						
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**").permitAll()
 						.anyRequest().authenticated())
@@ -75,7 +77,7 @@ public class SecurityConfig {
 	@Bean
 	CorsConfigurationSource configurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173" ));
+		configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173", "https://portfolio-rodrigo-dev.netlify.app/" ));
 
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT"));
 
