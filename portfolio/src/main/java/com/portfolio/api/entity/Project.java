@@ -1,11 +1,14 @@
 package com.portfolio.api.entity;
 
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Project {
@@ -14,18 +17,26 @@ public class Project {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	private String titleEnglish;
 	private String description;
-	private String technologies;
+	private String descriptionEnglish;
+	private List<String> technologies;
 	private String link;
 	private String githubLink;
 	private String image;
+	
+	@OneToOne(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Photo photo;
 
-	public Project(Long id, String title, String description, String technologies, String link, String githubLink,
-			String image) {
+
+	public Project(Long id, String title, String titleEnglish, String description, String descriptionEnglish,
+			List<String> technologies, String link, String githubLink, String image) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.titleEnglish = titleEnglish;
 		this.description = description;
+		this.descriptionEnglish = descriptionEnglish;
 		this.technologies = technologies;
 		this.link = link;
 		this.githubLink = githubLink;
@@ -60,11 +71,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public String getTechnologies() {
+	public List<String> getTechnologies() {
 		return technologies;
 	}
 
-	public void setTechnologies(String technologies) {
+	public void setTechnologies(List<String> technologies) {
 		this.technologies = technologies;
 	}
 
@@ -90,6 +101,22 @@ public class Project {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public String getTitleEnglish() {
+		return titleEnglish;
+	}
+
+	public void setTitleEnglish(String titleEnglish) {
+		this.titleEnglish = titleEnglish;
+	}
+
+	public String getDescriptionEnglish() {
+		return descriptionEnglish;
+	}
+
+	public void setDescriptionEnglish(String descriptionEnglish) {
+		this.descriptionEnglish = descriptionEnglish;
 	}
 
 	@Override
