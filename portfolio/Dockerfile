@@ -1,16 +1,9 @@
 FROM ubuntu:latest AS build
-
-RUN apt-get update
-RUN apt-getinstall openjdk-17-jdk -y
-COPY . .
-
+FROM openjdk:17-jdk-alpine
+WORKDIR /portfolio
 RUN apt-get install maven -y
 RUN mvn clean install
-
-FROM openjdk:17-jdk-slim
-
+RUN mkdir /api
 EXPOSE 8080
-
-COPY --from=build /target/portfolio-3.3.4.jar app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY target/*.jar /api/api.jar
+CMD [ "java", "-jar","/api/api.jar" ]
