@@ -4,4 +4,4 @@ WORKDIR /api
 COPY . /api
 RUN mvn clean package
 EXPOSE 8080
-CMD ["java", "-jar", "/api/target/*.jar"]
+CMD ["java", "-jar", "/api/target/api.jar"]
