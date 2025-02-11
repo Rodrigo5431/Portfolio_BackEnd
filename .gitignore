@@ -4,10 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-.metadata
-
-application.properties
-
 ### STS ###
 .apt_generated
 .classpath
@@ -35,4 +31,18 @@ build/
 
 ### VS Code ###
 .vscode/
-/.metadata/
+.vscode/launch.json
+
+### eclipse ###
+### Eclipse ###
+.apt_generated
+.classpath
+.metadata
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
