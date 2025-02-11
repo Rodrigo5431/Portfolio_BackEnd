@@ -1,4 +1,5 @@
 FROM openjdk:17-jdk-alpine
+RUN apt-get install maven -y
 RUN mvn clean install
 RUN mkdir /api
 EXPOSE 8080
