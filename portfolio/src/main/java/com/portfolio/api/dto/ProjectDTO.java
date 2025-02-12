@@ -8,7 +8,7 @@ public class ProjectDTO {
 
 	private Long id;
 	private String title;
-	private String titleEngligh;
+	private String titleEnglish;
 	private String description;
 	private String descriptionEnglish;
 	private List<String> technologies;
@@ -16,12 +16,12 @@ public class ProjectDTO {
 	private String githubLink;
 	private String image;
 
-	public ProjectDTO(Long id, String title, String titleEngligh, String description, String descriptionEnglish,
+	public ProjectDTO(Long id, String title, String titleEnglish, String description, String descriptionEnglish,
 			List<String> technologies, String link, String githubLink, String image) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.titleEngligh = titleEngligh;
+		this.titleEnglish = titleEnglish;
 		this.description = description;
 		this.descriptionEnglish = descriptionEnglish;
 		this.technologies = technologies;
@@ -37,7 +37,7 @@ public class ProjectDTO {
 	public ProjectDTO(Project project) {
 		this.id = project.getId();
 		this.title = project.getTitle();
-		this.titleEngligh = project.getTitleEnglish();
+		this.titleEnglish = project.getTitleEnglish();
 		this.description = project.getDescription();
 		this.descriptionEnglish = project.getDescriptionEnglish();
 		this.technologies = project.getTechnologies();
@@ -102,12 +102,12 @@ public class ProjectDTO {
 		this.image = image;
 	}
 
-	public String getTitleEngligh() {
-		return titleEngligh;
+	public String getTitleEnglish() {
+		return titleEnglish;
 	}
 
-	public void setTitleEngligh(String titleEngligh) {
-		this.titleEngligh = titleEngligh;
+	public void setTitleEnglish(String titleEngligh) {
+		this.titleEnglish = titleEngligh;
 	}
 
 	public String getDescriptionEnglish() {

@@ -108,7 +108,7 @@ public class ProjectService {
 
 		projectDto.setId(project.getId());
 		projectDto.setTitle(project.getTitle());
-		projectDto.setTitleEngligh(project.getTitleEnglish());
+		projectDto.setTitleEnglish(project.getTitleEnglish());
 		projectDto.setDescription(project.getDescription());
 		projectDto.setDescriptionEnglish(project.getDescriptionEnglish());
 		projectDto.setTechnologies(project.getTechnologies());
