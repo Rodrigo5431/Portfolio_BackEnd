@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -40,6 +41,7 @@ public class ProjectService {
 		throw new NotFoundException("Projeto não encontrado");
 	}
 
+	@Transactional
 	public ProjectDTO save(ProjectInsertDTO projectInsert, MultipartFile file) {
 		Project project = new Project();
 		try {
@@ -99,7 +101,7 @@ public class ProjectService {
 
 	public ProjectDTO addPhotoUri(Project project) {
 
-		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/photo/{id}")
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/projects/photo/{id}")
 				.buildAndExpand(project.getId()).toUri();
 
 		ProjectDTO projectDto = new ProjectDTO();
